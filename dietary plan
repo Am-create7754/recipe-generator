@@ -1,0 +1,92 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+struct Recipe {
+    string name;
+    string ingredients[10];
+    int ingredientCount;
+    string dietaryPreference;
+    string mealType;
+};
+
+void inputPreferences(string &dietaryPreference, string availableIngredients[], int &ingredientCount, string &mealType) {
+    cout << "Enter dietary preference (e.g., vegetarian, vegan, gluten-free): ";
+    cin >> dietaryPreference;
+
+    cout << "Enter number of available ingredients: ";
+    cin >> ingredientCount;
+
+    cout << "Enter available ingredients: ";
+    for (int i = 0; i < ingredientCount; ++i) {
+        cin >> availableIngredients[i];
+    }
+
+    cout << "Enter meal type (e.g., breakfast, lunch, dinner): ";
+    cin >> mealType;
+}
+
+void displayRecipe(const Recipe &recipe) {
+    cout << "Recipe Name: " << recipe.name << endl;
+    cout << "Ingredients: ";
+    for (int i = 0; i < recipe.ingredientCount; ++i) {
+        cout << recipe.ingredients[i] << " ";
+    }
+    cout << endl;
+    cout << "Dietary Preference: " << recipe.dietaryPreference << endl;
+    cout << "Meal Type: " << recipe.mealType << endl;
+}
+
+void generateRecipes(Recipe recipes[], int &recipeCount) {
+    recipes[0] = {"Vegetarian Pasta", {"pasta", "tomatoes", "cheese"}, 3, "vegetarian", "dinner"};
+    recipes[1] = {"Vegan Salad", {"lettuce", "tomatoes", "cucumber"}, 3, "vegan", "lunch"};
+    recipes[2] = {"Gluten-Free Pancakes", {"gluten-free flour", "milk", "eggs"}, 3, "gluten-free", "breakfast"};
+    recipeCount = 3;
+}
+
+bool containsIngredient(const string ingredient, const string availableIngredients[], int ingredientCount) {
+    for (int i = 0; i < ingredientCount; ++i) {
+        if (availableIngredients[i] == ingredient) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void findMatchingRecipe(const Recipe recipes[], int recipeCount, const string &dietaryPreference, const string availableIngredients[], int ingredientCount, const string &mealType) {
+    for (int i = 0; i < recipeCount; ++i) {
+        if (recipes[i].dietaryPreference == dietaryPreference && recipes[i].mealType == mealType) {
+            bool allIngredientsAvailable = true;
+            for (int j = 0; j < recipes[i].ingredientCount; ++j) {
+                if (!containsIngredient(recipes[i].ingredients[j], availableIngredients, ingredientCount)) {
+                    allIngredientsAvailable = false;
+                    break;
+                }
+            }
+            if (allIngredientsAvailable) {
+                displayRecipe(recipes[i]);
+                return;
+            }
+        }
+    }
+    cout << "No exact match found. Please try again with different inputs." << endl;
+}
+
+int main() {
+    string dietaryPreference;
+    string availableIngredients[10];
+    int ingredientCount;
+    string mealType;
+
+    inputPreferences(dietaryPreference, availableIngredients, ingredientCount, mealType);
+
+    Recipe recipes[10];
+    int recipeCount;
+    generateRecipes(recipes, recipeCount);
+
+    findMatchingRecipe(recipes, recipeCount, dietaryPreference, availableIngredients, ingredientCount, mealType);
+
+    return 0;
+}
