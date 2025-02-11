@@ -1,0 +1,55 @@
+The Recipe Recommendation System is a simple C++ program that suggests recipes based on the user's dietary preferences, 
+available ingredients, and desired meal type. It helps users quickly find a suitable recipe without searching manually.
+
+Features:
+- Users can input their dietary preference (e.g., vegetarian, vegan, gluten-free).
+- Users specify available ingredients.
+- Users select the desired meal type (breakfast, lunch, or dinner).
+- The program suggests a recipe that matches all criteria.
+- If no exact match is found, a message is displayed.
+
+How It Works:
+1. The program prompts the user to enter:
+   - Dietary preference
+   - Available ingredients
+   - Meal type
+2. A predefined set of recipes is loaded.
+3. The program checks which recipe meets the criteria.
+4. If a match is found, it displays the recipe details.
+5. If no match is found, it informs the user.
+
+Prerequisites:
+- A C++ compiler (such as g++ for Linux/macOS or MinGW for Windows).
+
+Installation & Usage:
+1. Copy the C++ code into a file, e.g., `recipe_recommender.cpp`.
+2. Compile the code using a C++ compiler:
+   g++ recipe_recommender.cpp -o recipe_recommender
+   
+3. Run the executable:  
+   ./recipe_recommender
+
+4. Follow the prompts to enter your preferences and receive a recipe suggestion.
+
+Example Usage
+User Input:
+Enter dietary preference (e.g., vegetarian, vegan, gluten-free): vegetarian
+Enter number of available ingredients: 3
+Enter available ingredients: pasta tomatoes cheese
+Enter meal type (e.g., breakfast, lunch, dinner): dinner
+
+Output:
+Recipe Name: Vegetarian Pasta
+Ingredients: pasta tomatoes cheese
+Dietary Preference: vegetarian
+Meal Type: dinner
+
+
+Future Enhancements
+- Expand the recipe database for more options.
+- Allow partial ingredient matching for better flexibility.
+- Implement a user-friendly graphical interface.
+
+License:
+This project is open-source and free to use and modify for learning purposes.
+
