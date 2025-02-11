@@ -12,8 +12,8 @@ struct Recipe {
     string mealType;
 };
 
-void inputPreferences(string &dietaryPreference, string availableIngredients[], int &ingredientCount, string &mealType) {
-    cout << "Enter dietary preference (e.g., vegetarian, vegan, gluten-free): ";
+void Preferences(string &dietaryPreference, string availableIngredients[], int &ingredientCount, string &mealType) {
+    cout << "Enter your diet preference (e.g., vegetarian, vegan, gluten-free): ";
     cin >> dietaryPreference;
 
     cout << "Enter number of available ingredients: ";
@@ -24,7 +24,7 @@ void inputPreferences(string &dietaryPreference, string availableIngredients[], 
         cin >> availableIngredients[i];
     }
 
-    cout << "Enter meal type (e.g., breakfast, lunch, dinner): ";
+    cout << "meal type (e.g., breakfast, lunch, dinner): ";
     cin >> mealType;
 }
 
@@ -40,7 +40,7 @@ void displayRecipe(const Recipe &recipe) {
 }
 
 void generateRecipes(Recipe recipes[], int &recipeCount) {
-    recipes[0] = {"Vegetarian Pasta", {"pasta", "tomatoes", "cheese"}, 3, "vegetarian", "dinner"};
+    recipes[0] = {"Vegetarian Pasta", {"pasta", "tomatoes", "onion","broccoli", "cauliflower", "bell-pepper", "cheese"}, 7, "vegetarian", "dinner"};
     recipes[1] = {"Vegan Salad", {"lettuce", "tomatoes", "cucumber"}, 3, "vegan", "lunch"};
     recipes[2] = {"Gluten-Free Pancakes", {"gluten-free flour", "milk", "eggs"}, 3, "gluten-free", "breakfast"};
     recipeCount = 3;
@@ -80,7 +80,7 @@ int main() {
     int ingredientCount;
     string mealType;
 
-    inputPreferences(dietaryPreference, availableIngredients, ingredientCount, mealType);
+    Preferences(dietaryPreference, availableIngredients, ingredientCount, mealType);
 
     Recipe recipes[10];
     int recipeCount;
